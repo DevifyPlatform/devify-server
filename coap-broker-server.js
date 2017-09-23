@@ -1,4 +1,6 @@
-var server = require('./libs/coap-broker');
+var server = require('./libs/coap-to-websocket-broker');
+
+var deviceTable = {};
 
 var onmessage = function(payload) {
 	var obj = JSON.parse(payload.data);
@@ -10,11 +12,9 @@ var onmessage = function(payload) {
 
 var onnewthing = function(thing) {
 	var data = JSON.stringify(thing);
-
 	console.log('<NEW_THING> ' + data);	
 };
 
 server.start({
-	onmessage: onmessage,
-	onnewthing: onnewthing
+	onmessage: onmessage
 });
