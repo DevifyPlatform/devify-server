@@ -19,7 +19,7 @@
     "util": "^0.10.3",
     "utils-merge": "^1.0.0",
     "websocket": "^1.0.17",
-    "wotcity.io": "^0.9.3"
+    "wotcity.io": "^0.9.8"
   },
   "scripts": {
     "test": "make test",
