@@ -11,7 +11,7 @@ var app_cfg = JSON.parse(fs.readFileSync(__dirname + "/config.app.json"));
 var access_token = JSON.parse(fs.readFileSync(__dirname +"/config.access_token.json"));
 
 var app   = dbox.app(app_cfg);
-var client = app.client(access_token);
+var client = app.client(access_token.oauth_token);
 
 /**
  * Internal Variables
