@@ -51,7 +51,7 @@ var merge = require('utils-merge');
  * CoAP URL Router
  */
 var coapHandlers = {
-   "/object/([A-Za-z0-9-]+)/send": RequestHandlers.proxyingWebSocket,
+   "/object/([A-Za-z0-9-]+)/send": RequestHandlers.sendProxyingWebSocket,
    "/object/([A-Za-z0-9-]+)/viewer": RequestHandlers.viewer,
    "/object/([A-Za-z0-9-]+)/status": RequestHandlers.status
 };
@@ -151,8 +151,8 @@ Server.prototype.start = function(options) {
   var server = new CoapBroker({
     port: port,
     host: host,
-    endpoint: [
-      'localhost:8000'
+    endpoints: [
+      'wot.city'
     ]
   });
   var router = new Router();
@@ -162,7 +162,7 @@ Server.prototype.start = function(options) {
   server.on('data', this.onData.bind(this));
   server.on('start', this.onStart.bind(this));
 
-  server.start(router.route, coapHandlers);
+  server.startAsProxy(router.route, coapHandlers);
 
   this.server = server;    
 };

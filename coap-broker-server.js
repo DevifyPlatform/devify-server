@@ -1,4 +1,4 @@
-var server = require('./libs/coap-to-websocket-broker');
+var server = require('./libs/coap-proxy-websocket');
 
 var deviceTable = {};
 
